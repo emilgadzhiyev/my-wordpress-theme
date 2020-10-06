@@ -57,80 +57,10 @@
         <div class="col-12 col-lg-9">
             <div class="block__home">
                 <h1>Emil Gadzhiyev&nbsp;&mdash; Web &amp;&nbsp;Entrepreneurship</h1>
-                <p>Lorem Ipsum is&nbsp;simply dummy text of&nbsp;the printing and typesetting industry. Lorem
-                    Ipsum
-                    has
-                    been
-                    the industry&rsquo;s standard dummy text ever since the 1500s, when an&nbsp;unknown printer
-                    took
-                    a&nbsp;galley of&nbsp;type and scrambled it&nbsp;to&nbsp;make a&nbsp;type specimen book.
-                    It&nbsp;has
-                    survived not only five centuries, but also the leap into electronic typesetting, remaining
-                    essentially
-                    unchanged. It&nbsp;was popularised in&nbsp;the 1960s with the release of&nbsp;Letraset
-                    sheets
-                    containing
-                    Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                    PageMaker
-                    including
-                    versions of&nbsp;Lorem Ipsum.</p>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="layout__section">
-    <div class="block-matrix">
-        <div class="row">
-            <div class="col-12 col-lg-6 block-matrix__item">
-                <div class="block-preview block-preview_text-only">
-                    <div class="block-preview__meta">
-                        <div class="row">
-                            <div class="col-auto">
-                                <img src="assets/gear.svg">
-                            </div>
-                            <div class="col block__meta">
-                                <h2 class="block-preview__title">
-                                    <a href="" class="link link_text">Tools</a>
-                                </h2>
-                                <p>Services and software that&nbsp;I use at&nbsp;work.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 block-matrix__item">
-                <div class="block-preview block-preview_text-only">
-                    <div class="block-preview__meta">
-                        <div class="row">
-                            <div class="col-auto">
-                                <img src="assets/browser.svg">
-                            </div>
-                            <div class="col block__meta">
-                                <h2 class="block-preview__title">
-                                    <a href="" class="link link_text">Programming</a>
-                                </h2>
-                                <p>Services and software that&nbsp;I use at&nbsp;work.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 block-matrix__item">
-                <div class="block-preview block-preview_text-only">
-                    <div class="block-preview__meta">
-                        <div class="row">
-                            <div class="col-auto">
-                                <img src="assets/money.svg">
-                            </div>
-                            <div class="col block__meta">
-                                <h2 class="block-preview__title">
-                                    <a href="" class="link link_text">Marketing &amp;&nbsp;finance</a>
-                                </h2>
-                                <p>Services and software that&nbsp;I use at&nbsp;work.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <p>This is&nbsp;my&nbsp;website. Here I&nbsp;write about the things, that interest&nbsp;me.<br>
+                    Mainly they are: <a href="https://www.emilgadzhiyev.me/c/technologies/">technologies</a>, <a href="https://www.emilgadzhiyev.me/c/notes/">notes</a>, <a href="https://www.emilgadzhiyev.me/c/projects/">projects</a>.<br>
+                    You can read more about me&nbsp;<a href="https://www.emilgadzhiyev.me/about/">here</a>. About professional growth <a href="https://www.emilgadzhiyev.me/about/me/certificates/">here</a>.<br>
+                    For everything else, you can search below.</p>
             </div>
         </div>
     </div>
@@ -139,15 +69,14 @@
     <div class="row">
         <div class="col-12 col-lg-9">
             <div class="block__home">
-                <h2>Воспользуйтесь поиском по&nbsp;сайту</h2>
                 <form action="" class="homeSearchForm">
-                    <input type="text" class="homeSearchField" placeholder="Search..">
+                    <input type="text" class="homeSearchField" placeholder="Site search">
                     <button type="submit" class="homeSearchButton"></button>
                 </form>
-                <p>Популярные результаты:
-                    <a href="">результат</a>,
-                    <a href="">результат</a>,
-                    <a href="">результат</a>
+                <p class="homeSearchResults">Popular queries:
+                    <a href="https://www.emilgadzhiyev.me/?s=python">python</a>,
+                    <a href="https://www.emilgadzhiyev.me/?s=bookmarks">bookmarks</a>&nbsp;and
+                    <a href="https://www.emilgadzhiyev.me/?s=bug">bug</a>.
                 </p>
             </div>
         </div>

@@ -32,9 +32,9 @@
                                     <?php
                                     $links = array_map(function ($category) {
                                         return sprintf(
-                                            '<a href="%s" class="link link_text">%s</a>',
-                                            esc_url(get_category_link($category)),
-                                            esc_html($category->name)
+                                            '<a href="%s" class="link link_text">%s</a>', // Шаблон вывода ссылки
+                                            esc_url(get_category_link($category)), // Ссылка на рубрику
+                                            esc_html($category->name) // Название рубрики
                                         );
                                     }, get_the_category());
                                     echo implode(',&nbsp;', $links);

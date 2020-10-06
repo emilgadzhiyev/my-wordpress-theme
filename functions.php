@@ -32,15 +32,25 @@ class Eg_Top_Menu_Walker extends Walker_Nav_Menu
     {
         $classes0 = empty($item->classes) ? array() : (array) $item->classes;
         $classes1 = array('', '', 'main-menu__link');
+        // Проверяем есть ли в масиве классов класс [current-menu-item]
+        // если такой класс есть то выполняем код - добавляем свой класс
         if (array_search('current-menu-item', $classes0)) {
+            // Добавляем в масиив классов свой класс
             $classes1[] = 'main-menu__link_active';
         }
+        // Преобразуем масив классов в строку
         $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes1), $item));
+        // Если у нас нет классов (пустая строка после преобразования с масива) то подставляем свои классы
         empty($class_names) and $class_names = "main-menu__link";
+        // Переменная будет хранить итоговый результат вывода пункта меню
         $output .= "";
+        // Переменная будет хранить атрибуте тега
         $attributes  = '';
+        // Если есть ссылка на страницу то генерим атрибуты тега
         !empty($item->url) and $attributes .= 'href="' . esc_attr($item->url) . '" class="' . $class_names . '"';
+        // Форматируем название пункта меню
         $title = apply_filters('the_title', $item->title, $item->ID);
+        // Генерим HTML пункта меню для вывода
         $item_output = $args->before
             . "<a $attributes >"
             . $args->link_before
@@ -48,6 +58,7 @@ class Eg_Top_Menu_Walker extends Walker_Nav_Menu
             . '</a>'
             . $args->link_after
             . $args->after;
+        // Проганяем итоговый HTML пункта меню через указаный фильтер для дополнительного форматирования
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
     }
 }
@@ -60,15 +71,25 @@ class Eg_Bottom_Menu_Walker extends Walker_Nav_Menu
     {
         $classes0 = empty($item->classes) ? array() : (array) $item->classes;
         $classes1 = array('link', 'link_text', 'social-links__link');
+        // Проверяем есть ли в масиве классов класс [current-menu-item]
+        // если такой класс есть то выполняем код - добавляем свой класс
         if (array_search('current-menu-item', $classes0)) {
+            // Добавляем в масиив классов свой класс
             $classes1[] = 'main-menu__link_active';
         }
+        // Преобразуем масив классов в строку
         $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes1), $item));
+        // Если у нас нет классов (пустая строка после преобразования с масива) то подставляем свои классы
         empty($class_names) and $class_names = "link link_text main-menu__link";
+        // Переменная будет хранить итоговый результат вывода пункта меню
         $output .= "";
+        // Переменная будет хранить атрибуте тега
         $attributes  = '';
+        // Если есть ссылка на страницу то генерим атрибуты тега
         !empty($item->url) and $attributes .= 'href="' . esc_attr($item->url) . '" class="' . $class_names . '"';
+        // Форматируем название пункта меню
         $title = apply_filters('the_title', $item->title, $item->ID);
+        // Генерим HTML пункта меню для вывода
         $item_output = $args->before
             . "<a $attributes >"
             . $args->link_before
@@ -76,6 +97,7 @@ class Eg_Bottom_Menu_Walker extends Walker_Nav_Menu
             . '</a>'
             . $args->link_after
             . $args->after;
+        // Проганяем итоговый HTML пункта меню через указаный фильтер для дополнительного форматирования
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
     }
 }
@@ -172,34 +194,52 @@ function doctype_opengraph($output)
     xmlns:fb="http://www.facebook.com/2008/fbml"';
 }
 add_filter('language_attributes', 'doctype_opengraph');
-
 function fb_opengraph()
 {
     global $post;
-    if (is_single() || is_page() || is_archive()) {
-        if (has_post_thumbnail($post->ID)) {
-            $img_src = wp_get_attachment_image_url(get_post_thumbnail_id(), 'full');
-        } else {
-            $img_src = 'https://www.emilgadzhiyev.me/wp-content/uploads/2020/05/opengraph_image.png';
-        }
-        if ($excerpt = $post->post_excerpt) {
-            $excerpt = strip_tags($post->post_excerpt);
-            $excerpt = str_replace("", "'", $excerpt);
-        } else {
-            $excerpt = get_bloginfo('description');
-        }
+    $img_src = 'https://www.emilgadzhiyev.me/wp-content/uploads/2020/05/opengraph_image.png';
+    $excerpt = get_bloginfo('description');
+    switch (true) {
+        case is_single() || is_page() || is_archive():
+            if (has_post_thumbnail($post->ID)) {
+                $img_src = wp_get_attachment_image_url(get_post_thumbnail_id(), 'full');
+            }
+            if ($excerpt = $post->post_excerpt) {
+                $excerpt = strip_tags($post->post_excerpt);
+                $excerpt = str_replace("", "'", $excerpt);
+            } else {
+                $excerpt = get_bloginfo('description');
+            }
 ?>
-        <meta property="og:title" content="<?php echo the_title();
-                                            echo single_term_title(); ?>" />
-        <meta property="og:description" content="<?php echo $excerpt; ?>" />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="<?php echo the_permalink(); ?>" />
-        <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>" />
-        <meta property="og:image" content="<?php echo $img_src; ?>" />
+            <meta name="title" content="<?php echo the_title();
+                                        echo single_term_title(); ?>">
+            <meta name="description" content="<?php echo $excerpt; ?>">
+            <meta property="og:title" content="<?php echo the_title();
+                                                echo single_term_title(); ?>" />
+            <meta property="og:description" content="<?php echo $excerpt; ?>" />
+            <meta property="og:type" content="article" />
+            <meta property="og:url" content="<?php echo the_permalink(); ?>" />
+            <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>" />
+            <meta property="og:image" content="<?php echo $img_src; ?>" />
+        <?php
+            break;
+        case is_front_page() || is_home():
+        ?>
+            <meta name="title" content="Emil Gadzhiyev &#8211; Web &amp; Entrepreneurship">
+            <meta name="description" content="This is&nbsp;my&nbsp;website. Here I&nbsp;write about the things, that interest&nbsp;me.">
+            <meta property="og:title" content="Emil Gadzhiyev &#8211; Web &amp; Entrepreneurship" />
+            <meta property="og:description" content="This is&nbsp;my&nbsp;website. Here I&nbsp;write about the things, that interest&nbsp;me." />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://www.emilgadzhiyev.me/" />
+            <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>" />
+            <meta property="og:image" content="<?php echo $img_src; ?>" />
 <?php
-    } else {
-        return;
+            break;
+        default:
+            return false;
+            break;
     }
+    return true;
 }
 add_action('wp_head', 'fb_opengraph', 5);
 # /OpenGraph
@@ -213,15 +253,14 @@ function wps_deregister_styles()
 # /Removing wp-block-library
 add_filter('img_caption_shortcode_width', '__return_false');
 
-# Removing <h2> tag from pagination
+// удаляет H2 из шаблона пагинации
 add_filter('navigation_markup_template', 'my_navigation_template', 10, 2);
 function my_navigation_template($template, $class)
 {
     return '%3$s';
 }
-# /Removing <h2> tag from pagination
 
-# Removing pages from search results
+//исключение страниц из результатов поиска start
 function wph_exclude_pages($query)
 {
     if ($query->is_search) {
@@ -230,4 +269,4 @@ function wph_exclude_pages($query)
     return $query;
 }
 add_filter('pre_get_posts', 'wph_exclude_pages');
-# /Removing pages from search results
+//исключение страниц из результатов поиска end
