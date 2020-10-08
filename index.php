@@ -69,10 +69,7 @@
     <div class="row">
         <div class="col-12 col-lg-9">
             <div class="block__home">
-                <form action="" class="homeSearchForm">
-                    <input type="text" class="homeSearchField" placeholder="Site search">
-                    <button type="submit" class="homeSearchButton"></button>
-                </form>
+                <?php get_search_form(); ?>
                 <p class="homeSearchResults">Popular queries:
                     <a href="https://www.emilgadzhiyev.me/?s=python">python</a>,
                     <a href="https://www.emilgadzhiyev.me/?s=bookmarks">bookmarks</a>&nbsp;and
